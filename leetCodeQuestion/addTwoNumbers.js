@@ -41,13 +41,12 @@ class LinkedList {
       previous = current;
       current = next;
     }
-  console.log("After reversing the linked-list");
-    while(previous!=null){
-        reversedList += previous.element + "->";
-        previous =previous.next;
-        if(previous === null){
-            reversedList += "NULL";
-        }
+    while (previous != null) {
+      reversedList += previous.element + "->";
+      previous = previous.next;
+      if (previous === null) {
+        reversedList += "NULL";
+      }
     }
     console.log(reversedList);
   }
@@ -65,13 +64,76 @@ class LinkedList {
     console.log(list);
   }
   checkSize() {
-    console.log("printing size", this.size);
+    console.log("printing size of the first linked list:-", this.size);
   }
 }
+
+//creating linked list two:-
+
+class LinkedList2 {
+  constructor() {
+    this.head = null;
+    this.size = 0;
+  }
+  //adding node in the linked list:
+  addNode(element) {
+    let node = new Node(element);
+    let current;
+    if (this.head === null) {
+      this.head = node;
+    } else {
+      current = this.head;
+      while (current.next != null) {
+        current = current.next;
+      }
+      current.next = node;
+    }
+    this.size++;
+  }
+  //reverse a linklist:
+  reverseLinkedList() {
+    let previous = null;
+    let current = this.head;
+    let next = null;
+    let reversedLinkList = "";
+    while (current != null) {
+      next = current.next;
+      current.next = previous;
+      previous = current;
+      current = next;
+    }
+    while (previous != null) {
+      reversedLinkList += previous.element + "->";
+      previous = previous.next;
+      if (previous === null) {
+        reversedLinkList += "NULL";
+      }
+    }
+    console.log(reversedLinkList);
+  }
+  //printing entire linked list:
+  printingLinkedList() {
+    let current = this.head;
+    let linkedlist = "";
+    while (current != null) {
+      linkedlist += current.element + "->";
+      if (current.next === null) {
+        linkedlist += "NULL";
+      }
+      current = current.next;
+    }
+    console.log(linkedlist);
+  }
+  //printing the size of the link list;
+  checkSize() {
+    console.log("printing size of second linked list:-", this.size);
+  }
+}
+
 //implimenting likedlist:-
 function implimentingLinkedList() {
   let LL1 = new LinkedList();
-
+  let LL2 = new LinkedList2();
   LL1.addNodes(2);
   LL1.addNodes(3);
   LL1.addNodes(4);
@@ -79,6 +141,17 @@ function implimentingLinkedList() {
   LL1.addNodes(8);
   LL1.checkSize();
   LL1.printLinkedList();
+  console.log("after reversing the linked list:-");
   LL1.reverseLinkedList();
+  console.log("-------------linked -list second---------");
+  LL2.addNode(1);
+  LL2.addNode(5);
+  LL2.addNode(2);
+  LL2.addNode(7);
+  LL2.addNode(9);
+  LL2.printingLinkedList();
+  console.log("after reversing the linked list:-");
+  LL2.reverseLinkedList();
+  LL2.checkSize();
 }
 implimentingLinkedList();
