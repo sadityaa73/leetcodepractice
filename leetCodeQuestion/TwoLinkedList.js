@@ -42,7 +42,6 @@ class LinkedList {
         list += "NULL";
       }
     }
-    // console.log(list);
     return list;
   }
   //reverse a linklist;
@@ -71,27 +70,11 @@ class LinkedList {
 //add two numbers in the link list;
 
 function addTwoLinkedList(ll1, ll2) {
-//   let first = ll1.head;
-//   let second = ll2.head;
-//   let printlist1 = "";
-//   let printlist2 = "";
-//   while (first || second != null) {
-//     printlist1 += first.element + "->";
-//     printlist2 += second.element + "->";
-//     first = first.next;
-//     second = second.next;
-//     if (first === null) {
-//       printlist1 += "NULL";
-//     }
-//     if (second === null) {
-//       printlist2 += "NULL";
-//     }
-//   }
-//   console.log("printing list one", printlist1);
-//   console.log("printing list two", printlist2);
   let l1 = reverseList(ll1);
   let l2 = reverseList(ll2);
-  linkedList3(l1,l2);
+  let ans = linkedList3(l1, l2);
+  return printAnswerList(ans);
+  
 }
 
 //reverse linklist to summing up the elemments:
@@ -100,8 +83,6 @@ function reverseList(LL) {
   let current = LL.head;
   let next = null;
   let previous = null;
-  let reversedList = "";
-
   while (current != null) {
     next = current.next;
     current.next = previous;
@@ -112,34 +93,41 @@ function reverseList(LL) {
 }
 
 //answer linked list;
-function linkedList3(ll1,ll2){
-    // console.log(ll1,"and",ll2);
-    let l3 = new LinkedList();
-    let sum;
-    let carry = 0;
-    while(ll1 && ll2){
-       sum = ll1.element + ll2.element + carry;
-       carry = sum/10;
-       console.log("printing sum",sum);
-       l3.addNodes(sum%10);
-       ll1 = ll1.next;
-       ll2 = ll2.next;
-    }
-    while(ll1){
-        sum = ll1.element + carry;
-        carry = sum/10;
-        console.log("printing sum",sum);
-        l3.addNodes(sum%10);
-        ll1 = ll1.next;
-    }
-    while(ll2){
-        sum = ll2.element + carry;
-        carry = sum/10;
-        console.log("printing sum",sum);
-        l3.addNodes(sum%10);
-        ll2 = ll2.next;
-    }
-    console.log(l3.printLinkedList());
+function linkedList3(ll1, ll2) {
+  let l3 = new LinkedList();
+  let sum;
+  let carry = 0;
+  while (ll1 && ll2) {
+    sum = ll1.element + ll2.element + carry;
+    carry = sum / 10;
+    l3.addNodes(Math.round(sum) % 10);
+    ll1 = ll1.next;
+    ll2 = ll2.next;
+  }
+  while (ll1) {
+    sum = ll1.element + carry;
+    carry = sum / 10;
+    l3.addNodes(Math.round(sum) % 10);
+    ll1 = ll1.next;
+  }
+  while (ll2) {
+    sum = ll2.element + carry;
+    carry = sum / 10;
+    l3.addNodes(Math.round(sum) % 10);
+    ll2 = ll2.next;
+  }
+  return l3;
+}
+
+function printAnswerList(l3) {
+  let current = l3.head;
+  let list = "";
+
+  while (current != null) {
+    list += current.element;
+    current = current.next;
+  }
+  return list;
 }
 //implimenting Linked list:
 
