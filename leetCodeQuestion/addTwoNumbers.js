@@ -1,5 +1,4 @@
 //creating node for the link list:
-
 class Node {
   constructor(element) {
     this.element = element;
@@ -62,9 +61,21 @@ class LinkedList {
       }
     }
     console.log(list);
+    return list;
   }
   checkSize() {
     console.log("printing size of the first linked list:-", this.size);
+    return this.size;
+  }
+  //converting linkedlist into array:
+  LinkedListToArray(){
+    let current = this.head;
+    var array=[];
+    while(current!=null){
+        array.push(current.element);
+        current = current.next;
+    }
+    return array;
   }
 }
 
@@ -129,7 +140,6 @@ class LinkedList2 {
     console.log("printing size of second linked list:-", this.size);
   }
 }
-
 //implimenting likedlist:-
 function implimentingLinkedList() {
   let LL1 = new LinkedList();
@@ -143,6 +153,7 @@ function implimentingLinkedList() {
   LL1.printLinkedList();
   console.log("after reversing the linked list:-");
   LL1.reverseLinkedList();
+  console.log("printing array",LL1.LinkedListToArray());
   console.log("-------------linked -list second---------");
   LL2.addNode(1);
   LL2.addNode(5);
