@@ -31,4 +31,3 @@ function demo(s) {
 
 }
 
-demo("XVIIII");
