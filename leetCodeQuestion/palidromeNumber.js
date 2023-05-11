@@ -19,4 +19,4 @@ function checkPalidrome(originalNumber) {
     return false;
   }
 }
-checkPalidrome(121);
+checkPalidrome(123);
