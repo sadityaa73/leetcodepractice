@@ -90,12 +90,7 @@ function addTwoNumbers(list1, list2) {
     this.size++;
     l2 = l2.next;
   }
-  // if (carry) {
-  //   sum = carry;
-  //   carry = sum / 10;
-  //   l3.addNode(Math.round(sum) % 10);
-  //   this.size++;
-  // }
+ 
   let current = l3.head;
   let l3_list = "";
 
