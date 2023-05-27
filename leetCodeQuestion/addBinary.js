@@ -15,6 +15,9 @@ function addBinary(string1, string2) {
   final = BigInt(`0b${string1}`) + BigInt(`0b${string2}`);
   // sum is converted back to string using toString(2), here 2 is radix argument, so toString(2) converts to binary;
   final = final.toString(2);
+  let dec = 10;
+  let convertToBinary = dec.toString(8);
+  console.log("@@converted binary value",convertToBinary);
   return final;
 }
 
