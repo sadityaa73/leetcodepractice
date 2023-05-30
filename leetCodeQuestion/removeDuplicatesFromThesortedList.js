@@ -54,15 +54,19 @@ class LinkedList {
 }
 
 function removeDuplicates(head) {
-  let current = head;
+    if(head === null || head.next === null) return head;
 
-  while (current.next!=null) {
-    if (current.value === current.next.value) {
-      current.next = current.next.next;
+    let current = head;
+    while(current!=null && current.next!=null)
+    {
+      if(current.val === current.next.val)
+      {
+        current.next = current.next.next;
+      }else{
+        current = current.next;
+      }
     }
-    current = current.next;
-  }
-  return head;
+    return head;
 }
 
 function implementingLinkedList() {
