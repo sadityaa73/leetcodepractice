@@ -78,16 +78,16 @@ function TraverseTree2(node)
 
 function checkTree(tree1,tree2)
 {
-     console.log("tree1",tree1.toString());
-     console.log("tree2",tree2.toString());
-     let i=0;
-     let j=0;
-
-     if(tree1.toString()===tree2.toString())
-     {
-        return true;
-     }
+     if(tree1.length != tree2.length)
      return false;
+     
+     for(let i=0;i<tree1.length;i++)
+     {
+        if(tree1[i] !== tree2[i])
+        {
+            return false;
+        }
+     }
 }
 
 function buildTree()
@@ -95,7 +95,7 @@ function buildTree()
     let root1 = new Node(1);
     let root2 =new Node(1);
     root1.left=new Node(2);
-   
+    root1.right = new Node(1)
     root2.left=new Node(null);
     root2.right = new Node(2);
     console.log("check Tree is Identical or Not:-",checkTree(TraverseTree1(root1),TraverseTree2(root2)));
