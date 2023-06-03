@@ -21,22 +21,6 @@ class Node{
 
 var root = null;
 
-function printTree(node)
-{
-    let output=[];
-
-    function TraverseTree(node)
-    {
-        if(node===null)return;
-
-        output.push(node.val);
-        TraverseTree(node.left);
-        TraverseTree(node.right);
-    }
-    TraverseTree(node);
-    return output;
-}
-
 //convert a sorted array into BST(Binary Search Tree);
 
 function sortedArrayIntoBST(arr,start,end)
