@@ -5,11 +5,11 @@ function checkPalidrome(originalNumber) {
   let tempOriginalNumber = originalNumber;
   while (tempOriginalNumber >0) {
     let lastDigit = tempOriginalNumber % 10;
-    console.log("printing lastDigit", lastDigit);
+
     reverseNum = Math.trunc(reverseNum * 10 + lastDigit);
-    console.log("printing reverseNum", reverseNum);
+
     tempOriginalNumber = Math.trunc(tempOriginalNumber / 10);
-    console.log("printing tempOriginal Number", tempOriginalNumber);
+    
   }
   if (originalNumber === reverseNum) {
     console.log("true");
