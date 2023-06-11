@@ -69,16 +69,17 @@ function printLinkedList(head) {
 }
 
 function detectCycle(head) {
+    let currentNode = head;
   let fast = head;
   let slow = head;
-console.log("printing head",head);
-  while (!fast  && fast.next!=null) {
+console.log("printing head",fast.next);
+  while (currentNode.next!=null) {
     slow = slow.next;
     fast = fast.next.next;
-    if (fast === slow) {
+    if (slow === fast) {
       return true;
     }
-    fast = fast.next;
+    currentNode = currentNode.next;
   }
   return false;
 }
@@ -90,7 +91,7 @@ function buildList() {
   let node = new Node(1);
   node.next = new Node(2);
   node.next.next = new Node(3);
-  node.next.next.next = new Node(node.next);
+  node.next.next.next = new Node(node);
   console.log("printing linked list", printLinkedList(node));
 
   console.log("check linked list has cycle or not:-", detectCycle(node));
