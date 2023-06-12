@@ -88,6 +88,48 @@ function intersectionPoint(list1, list2) {
    return " printing null";
 }
 
+//printing linked list as to check intersection alorthim:
+function printLinkedList(head1 ,head2)
+{
+  let a = head1;
+  let b = head2;
+
+  let string1 ="";
+  let string2 ="";
+
+
+  while(a != b)
+  {
+    if(a===null)
+    {
+      a=head2;
+      string1 += a;
+      console.log("Printing string1 in if case",string1);
+    }
+    else{
+      string1 += a.val;
+      console.log("Printing string1 in else case",string1);
+      a = a.next;
+    }
+    if(b===null)
+    {
+      b=head1;
+      string2 +=b;
+      console.log("Printing string2 in if case",string2);
+    }
+    else{
+      string2 +=b.val;
+      console.log("Printing string2 in else case",string2)
+      b = b.next;
+    }
+  }
+  let result ={
+    string1:string1,
+    string2:string2,
+  }
+  return  result;
+}
+
 function driverFunction() {
   let arr1 = [4, 1, 8, 4, 5];
   let arr2 = [5, 6, 1, 8, 4, 5];
@@ -96,6 +138,8 @@ function driverFunction() {
   let list2 = CreateLinkedlist(arr2);
 
   console.log("printing intersection point of the linked list:-",intersectionPoint(list1.head,list2.head));
+
+  console.log("pritnt linked list:-",printLinkedList(list1.head,list2.head));
 }
 
 //calling driving function:
