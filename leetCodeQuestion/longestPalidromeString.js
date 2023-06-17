@@ -22,7 +22,7 @@ function longestPalidromeString(string)
         console.log("printing tempString",tempString);
         if(reverseStr !== tempString)
         {
-       tempString = tempString.slice(0,-1);
+       tempString = tempString.slice(1);
        i++;
        }else{
         return tempString;
