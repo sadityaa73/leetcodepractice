@@ -15,22 +15,3 @@ function binaryToDecimal(n)
 }
 
 // console.log("reverse bit binary to decimal:",binaryToDecimal(Bit));
-console.log(32/2);
-function decimalToBinary(n)
-{
-    console.log("called");
-   let number =n;
-   let quotient =0;
-   let divider = 2;
-   let result =[];
-   while(divider < quotient)
-   {
-    result.push(number%divider);
-    number = number/divider;
-    console.log(number);
-    quotient = number;
-    console.log(quotient);
-   }
-   return result.reverse();
-}
-console.log(decimalToBinary(40));
