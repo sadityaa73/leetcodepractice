@@ -1,6 +1,6 @@
 //WAP To Reverse Bit ;
 
-let Bit = "11111111111111111111111111111101";
+let Bit = "00000010100101000001111010011100";
 
 function binaryToDecimal(n)
 {    
@@ -11,7 +11,25 @@ function binaryToDecimal(n)
         result += Number(reverse[i]) * Math.pow(2,i);
         
     }
+    console.log("result",result);
     return result;
 }
 
-// console.log("reverse bit binary to decimal:",binaryToDecimal(Bit));
+function decimalToBinary(n)
+{
+    let decimalVal= n;
+    let divider = 2;
+    let result ="";
+    let Ans=[];
+    while(decimalVal > 0)
+    {
+        result = decimalVal/divider;
+        Ans.push(decimalVal%divider);
+        decimalVal =Math.trunc(result);
+        console.log(decimalVal);
+    }
+    Ans.reverse();
+    return Ans;
+}
+
+console.log(decimalToBinary(binaryToDecimal(Bit)));
