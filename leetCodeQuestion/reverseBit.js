@@ -41,4 +41,4 @@ function binaryToDecimal(array)
     console.log("result",result);
     return result;
 }
-console.log("print binary to decimal",binaryToDecimal(decimalToBinary(43261596)))
+console.log("print binary to decimal",binaryToDecimal(decimalToBinary(11)))
