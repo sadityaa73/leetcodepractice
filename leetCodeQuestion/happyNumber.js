@@ -1,18 +1,23 @@
-function isHappy(n)
-{
-  let number = n.toString().split("");
-  let result = 0;
-  console.log("number",number);
-  for(let i = 0;i<number.length;i++)
-  {
-    result += Math.pow(number[i],2);
-    console.log("result",result);
+var isHappy = function(n) {
+  if(n<10){
+      if(n === 1 || n === 7){
+          return true
+      }
+      return false
   }
-  if(result !==1)
-  {
-    isHappy(result);
+  let total = 0
+  while(n>0){
+      let sq = n % 10
+      total += sq**2;
+      console.log("total",total);
+      console.log("n",n);
+      n -= sq
+      console.log("after",n);
+      n /= 10
   }
-  return true;
-}
-
-console.log("is happy",isHappy(19));
+  if(total === 1){
+      return true
+  }
+  return isHappy(total)
+};
+console.log("ishappy",isHappy(19));
