@@ -9,10 +9,7 @@ var isHappy = function(n) {
   while(n>0){
       let sq = n % 10
       total += sq**2;
-      console.log("total",total);
-      console.log("n",n);
       n -= sq
-      console.log("after",n);
       n /= 10
   }
   if(total === 1){
@@ -20,4 +17,4 @@ var isHappy = function(n) {
   }
   return isHappy(total)
 };
-console.log("ishappy",isHappy(19));
+console.log("ishappy",isHappy(2));
