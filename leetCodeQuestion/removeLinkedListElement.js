@@ -5,29 +5,35 @@
 // Input: head = [1,2,6,3,4,5,6], val = 6
 // Output: [1,2,3,4,5]
 
+//creating a node for the linked list;
 class Node {
   constructor(val) {
-    this.data = val;
+    this.val = val;
     this.next = null;
   }
 }
 
+//creating a linked list;
 class LinkedList {
   constructor() {
     this.head = null;
+    this.size = 0;
   }
 
-  add(val) {
+  addNode(val) {
     let node = new Node(val);
-    let current;
+    let currentNode;
+
     if (this.head === null) {
       this.head = node;
+      this.size++;
     } else {
-      current = this.head;
-      while (current.next != null) {
-        current = current.next;
+      currentNode = this.head;
+      while (currentNode.next != null) {
+        currentNode = currentNode.next;
       }
-      current.next = node;
+      currentNode.next = node;
+      this.size++;
     }
   }
 
@@ -36,7 +42,7 @@ class LinkedList {
     let string = "";
 
     while (current) {
-      string += current.data + "->";
+      string += current.val + "->";
       if (current.next === null) {
         string += "NULL";
       }
@@ -46,39 +52,74 @@ class LinkedList {
   }
 }
 
-function removingElement(head, value) {
-  let current = head;
-  let previous = null;
+// build a linked list:
 
-  if (!current || !current.next) return;
-  while (current) {
-    if (current.data === value) {
-      previous.next = current.next;
+function buildLinkedList(input) {
+  let LL = new LinkedList();
+  for (let i = 0; i < input.length; i++) {
+    LL.addNode(input[i]);
+  }
+  return LL.head;
+}
 
-      removingElement(head, value);
+//remove elements from the linked list:
+
+function removeElements(head, value) {
+  let temp;
+  let current;
+  if (head === null) return head;
+  if (head.val === value) {
+    temp = head.next;
+    head = temp;
+    removeElements(head, value);
+  } else {
+    current = head;
+    while (current.next != null) {
+      if (current.next.val === value) {
+        temp = current.next;
+        current.next = current.next.next;
+        removeElements(temp, value);
+      } else {
+        current = current.next;
+      }
     }
-    previous = current;
+    let newCurrent = head;
+    return newCurrent;
+  }
+}
+//print linked list:
+
+function printLinkedList(head) {
+  console.log("printng head in printlinkedlist",head);
+  if(head=== null)return null;
+  let current = head;
+  let string = "";
+
+  while (current) {
+    string += current.val + "->";
+    if (current.next === null) {
+      string += "NULL";
+    }
     current = current.next;
   }
-  return head;
+  return string;
 }
 
-function buildList() {
-  let ll = new LinkedList();
-  ll.add(1);
-  ll.add(2);
-  ll.add(3);
-  ll.add(4);
-  ll.add(3);
-  ll.add(6);
-  ll.add(3);
+//driver function:
 
-  console.log("remove elements",removingElement(ll.head, 3));
+function driverCode() {
+  let array = [7, 7, 7, 7, 7, 7];
 
-//   console.log(
-//     "print linked list after removing given value:-",
-//     ll.printLinkedList()
-//   );
+  let Linkedlist = buildLinkedList(array);
+
+  console.log("print linked list:-", printLinkedList(Linkedlist));
+
+  console.log(
+    "print linked list after removeing:-",
+    printLinkedList(removeElements(Linkedlist, 7))
+  );
 }
 
-buildList();
+//calling driver function:
+
+driverCode();
